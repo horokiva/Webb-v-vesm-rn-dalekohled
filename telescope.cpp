@@ -243,19 +243,23 @@ void swap_points(const std::pair<size_t, size_t>& m_size, std::vector<unsigned c
     }
 
     // Prohození hodnot na pozicích p1 a p2.
-    std::swap(get(vec, p1.x, p1.y, m_size), get(vec, p2.x, p2.y, m_size));
+    std::swap(get(vec, p1.y, p1.x, m_size), get(vec, p2.y, p2.x, m_size));
 }
 
 void swap_points(const std::pair<size_t, size_t>& m_size, std::vector<unsigned char>& vec, const Point& p1, const Point& p2, const Point& delta) {
-    // Ověříme, že obdélníky jsou uvnitř matice a že se nepřekrývají.
-    if (p1.x + delta.x > m_size.first || p1.y + delta.y > m_size.second || p2.x + delta.x > m_size.first || p2.y + delta.y > m_size.second) {
-        throw std::invalid_argument("Rectangles are outside of matrix bounds or overlap.");
+    if (p1.x + delta.x > m_size.second || p1.y + delta.y > m_size.first ||
+        p2.x + delta.x > m_size.second || p2.y + delta.y > m_size.first) {
+        throw std::invalid_argument("Rectangles are outside of matrix bounds.");
     }
 
-    // Provedeme výměnu obdélníků.
-    for (size_t i = 0; i < delta.x; ++i) {
-        for (size_t j = 0; j < delta.y; ++j) {
-            std::swap(get(vec, p1.x + i, p1.y + j, m_size), get(vec, p2.x + i, p2.y + j, m_size));
+    if ((p1.x < p2.x + delta.x && p1.x + delta.x > p2.x && p1.y < p2.y + delta.y && p1.y + delta.y > p2.y) ||
+        (p2.x < p1.x + delta.x && p2.x + delta.x > p1.x && p2.y < p1.y + delta.y && p2.y + delta.y > p1.y)) {
+        throw std::invalid_argument("Rectangles overlap.");
+    }
+
+    for (size_t i = 0; i < delta.y; ++i) {
+        for (size_t j = 0; j < delta.x; ++j) {
+            std::swap(get(vec, p1.y + i, p1.x + j, m_size), get(vec, p2.y + i, p2.x + j, m_size));
         }
     }
 }
