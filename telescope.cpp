@@ -264,5 +264,9 @@ void swap_points(const std::pair<size_t, size_t>& m_size, std::vector<unsigned c
     }
 }
 
+void decode_picture(const std::string& file, const std::pair<size_t, size_t>& m_size, std::vector<unsigned char>& vec) {
+    // TODO
+}
+
 
 
