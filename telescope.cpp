@@ -214,10 +214,14 @@ void rotate_right(const std::pair<size_t, size_t>& m_size, std::vector<unsigned 
     size_t num_cols = m_size.second;
 
     // Normalizujeme krok, aby nebyl větší než počet sloupců.
-    step = step % num_cols;
+
     if (step < 0) {
-        step += num_cols; // Pokud je krok záporný, převedeme ho na kladný krok směrem doprava.
+        while (step < 0) {
+            step += num_cols; // Pokud je krok záporný, převedeme ho na kladný krok směrem doprava.
+        }
     }
+
+    step = abs(step) % num_cols;
 
     // Pokud je step 0, neděláme žádnou změnu.
     if (step == 0) return;
