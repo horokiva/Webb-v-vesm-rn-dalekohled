@@ -29,28 +29,25 @@ Další část projektu se zaměřuje na manipulaci s maticí, která obsahuje z
 ### 4. Manipulace s Maticí
 Matice může být rotována a její prvky mohou být zaměněny.
 
-**Rotace dolů** (`rotate_down`)
+- **Rotace dolů** (`rotate_down`)
 
   - Posune všechny řádky dolů, přičemž poslední řádek se přesune na začátek.
   - Podporuje rotaci o více kroků (i záporných).
-**Rotace doprava** (`rotate_right`)
+    
+- **Rotace doprava** (`rotate_right`)
 
   - Posune všechny sloupce doprava, přičemž poslední sloupec se přesune na začátek.
   - Podporuje rotaci o více kroků (i záporných).
-**Prohození dvou bodů** (`swap_points`)
+    
+- **Prohození dvou bodů** (`swap_points`)
 
   - Umožňuje výměnu dvou prvků v matici.
   - Ověřuje, že body jsou v mezích matice.
-**Prohození obdélníků** (`swap_points` s `delta`)
+    
+- **Prohození obdélníků** (`swap_points` s `delta`)
 
   - Výměna dvou obdélníkových oblastí v matici.
   - Kontroluje, zda se obdélníky nepřekrývají.
 ### 5. Dekódování Obrazu
 - `decode_picture` (zatím neimplementováno)
   - Měl by umožnit načtení obrázku ze souboru a jeho transformaci do matice znaků.
-## Použití
-Tento projekt je vhodný pro:
-
-= Student IT, kteří se učí pracovat s datovými strukturami a proudy v C++.
-= Procvičení práce s jednorozměrným vektorem k reprezentaci dvourozměrných dat.
-= Porozumění základním operacím s maticemi, jako je čtení, zápis, rotace a výměna prvků.
